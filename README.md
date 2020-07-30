@@ -1,2 +1,2 @@
-# Equa-o2-grau-e-conversor-decimal
+# oi
 Nunca mais use papel para calcular equação de 2ºgrau
