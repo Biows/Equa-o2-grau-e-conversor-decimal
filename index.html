@@ -5,31 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Equação de 2ºgrau</title>
     <link rel="stylesheet" href="estilo.css">
-    <script src="script.js"></script>
+    
 </head>
 <body>
     <header>
         <h1>Equação de 2ºgrau</h1>
     </header>
-    <div id="link">
-        <p>Caso necessite:</p>
-        -><a href="http://127.0.0.1:5500/Projetos/Equa%C3%A7%C3%A3o%202%C2%BAgrau/conversor.html">
-            Conversor de fração para decimal
-        </a>
-    </div>
+    
     <section>
         <div>
             <p>Digite o valor de A:
-                <input type="number" name="" id="vlra">
+                <input type="number" id="vlra">
             </p>
             <p>Digite o valor de B:
-                <input type="number" name="" id="vlrb">
+                <input type="number" id="vlrb">
             </p>
             <p>Digite o valor de C:
-                <input type="number" name="" id="vlrc">
+                <input type="number" id="vlrc">
             </p>
+            <div id="botao">
             <input type="button" value="Calcular" id="btn" onclick="calcular()">
-
+            </div>
         </div>
         <div id="res">
 
@@ -37,7 +33,14 @@
     </section>
         
     <footer>
-        <p>&copy; Lucaslopespultz</p>
+        <div id="link">
+            <p>Caso necessite:</p>
+            -><a href="./conversor.html">
+                Conversor de fração para decimal
+            </a>
+        </div>
     </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>

@@ -1,5 +1,10 @@
-function isWrite(a,b,c){
-    if(a.length != 0 && b.length != 0 && c.length != 0){
+let a = document.getElementById('vlra')
+let b = document.getElementById('vlrb')
+let c = document.getElementById('vlrc')
+let res= document.getElementById('res')
+
+function isWrite(a){
+    if(a.length == 0 || Number(a) == 0){
         return false
     }else{
         return true
@@ -15,23 +20,22 @@ function deltaNeg(delta){
 }
 
 function calcular(){
-    let a = document.getElementById('vlra')
-    let b = document.getElementById('vlrb')
-    let c = document.getElementById('vlrc')
-    let res= document.getElementById('res')
 
-    if(isWrite(a.value, b.value, c.value)){
-        alert('[Erro] Digite os valores corretamente.')
-    }else{
-        let delta = function (a,b,c){
+    if(isWrite(a.value)){
+
+        res.style.color = ''
+        res.style.textAlign = ''
+        a.style.backgroundColor = '' 
+
+        let delta = function (a,b=0,c=0){
             return Math.pow(b,2) - 4 * Number(a) * Number(c)
         }
 
-        let x1 = function (a,b,delta){
+        let x1 = function (a,b=0,delta=0){
             return ((Number(b)*-1) + Math.pow(delta, 0.5)) / (2 * Number(a)) 
         }
 
-        let x2 = function (a,b,delta){
+        let x2 = function (a,b=0,delta=0){
             return ((Number(b)*-1) - Math.pow(delta, 0.5)) / (2 * Number(a)) 
         }
         if(deltaNeg(delta(a.value, b.value, c.value))){
@@ -44,6 +48,10 @@ function calcular(){
             res.innerHTML += `O valor de x<sub>2</sub> não pertence aos reais`
         }
 
-        
+    }else{
+        res.innerHTML = 'É necessário informar o valor de A.'
+        res.style.color = 'red'
+        res.style.textAlign = 'center'
+        a.style.backgroundColor = 'rgba(255, 0, 0, 0.200)' 
     }
 }
