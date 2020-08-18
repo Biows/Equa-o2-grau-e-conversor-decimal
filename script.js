@@ -2,6 +2,7 @@ const a = document.getElementById('vlra')
 const b = document.getElementById('vlrb')
 const c = document.getElementById('vlrc')
 const res = document.getElementById('res')
+const btn = document.getElementsByName('btn-neg')
 
 const calcEq2g = {
     delta(a, b = 0, c = 0) { return Math.pow(b, 2) - 4 * Number(a) * Number(c) },
@@ -20,6 +21,30 @@ const x1 = calcEq2g['x1']
 const x2 = calcEq2g['x2']
 const xv = calcEq2g['xv']
 const yv = calcEq2g['yv']
+
+function btnNegAct(){
+    alert('Clique no botão (-) para deixar o número digitado negativo.')
+
+    btn[0].removeAttribute('hidden','')
+    btn[1].removeAttribute('hidden','')
+    btn[2].removeAttribute('hidden','')
+}
+
+function transNegative(n){
+    if(n == 0){
+        if(a.value > 0){
+            a.value =`${a.value*(-1)}`
+        }  
+    }else if(n==1){
+        if(b.value > 0){
+            b.value =`${b.value*(-1)}`
+        }
+    }else{
+        if(c.value > 0){
+            c.value =`${c.value*(-1)}`
+        }    
+    }
+}
 
 function isWrite(a) {
     if (a.length == 0 || Number(a) == 0) {

@@ -16,12 +16,15 @@
         <div>
             <p>Digite o valor de A:
                 <input type="number" id="vlra" autofocus>
+                <button type="button" hidden name="btn-neg"  onclick="transNegative(0)">-</button>
             </p>
             <p>Digite o valor de B:
                 <input type="number" id="vlrb" >
+                <button type="button" hidden name="btn-neg"  onclick="transNegative(1)">-</button>
             </p>
             <p>Digite o valor de C:
-                <input type="number" id="vlrc" >
+                <input type="number" id="vlrc" > 
+                <button type="button" hidden name="btn-neg" onclick="transNegative(2)">-</button>
             </p>
             <div id="botao">
             <input type="button" value="Calcular raizes" id="btn" onclick="calcularRaizes()">
@@ -41,6 +44,9 @@
             -><a href="./conversor.html">
                 Conversor de fração para decimal
             </a>
+            <p onclick="btnNegAct()">
+                -> <a href="#">Se no seu teclado não houver "-" clique aqui.</a> 
+            </p>
         </div>
     </footer>
 
