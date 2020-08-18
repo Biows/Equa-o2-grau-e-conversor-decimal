@@ -22,6 +22,14 @@ a{
     text-decoration: none;
 }
 
+/* copy */
+
+#copy{
+    color: white;
+    text-align: center;
+    margin-top: 10px;
+}
+
 footer{
     color: white;
     text-align: center;
