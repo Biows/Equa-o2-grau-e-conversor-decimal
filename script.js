@@ -1,57 +1,83 @@
-let a = document.getElementById('vlra')
-let b = document.getElementById('vlrb')
-let c = document.getElementById('vlrc')
-let res= document.getElementById('res')
+const a = document.getElementById('vlra')
+const b = document.getElementById('vlrb')
+const c = document.getElementById('vlrc')
+const res = document.getElementById('res')
 
-function isWrite(a){
-    if(a.length == 0 || Number(a) == 0){
+const calcEq2g = {
+    delta(a, b = 0, c = 0) { return Math.pow(b, 2) - 4 * Number(a) * Number(c) },
+
+    x1(a, b = 0, delta = 0) { return ((Number(b) * -1) + Math.pow(delta, 0.5)) / (2 * Number(a)) },
+
+    x2(a, b = 0, delta = 0) { return ((Number(b) * -1) - Math.pow(delta, 0.5)) / (2 * Number(a)) },
+    
+    xv(a, b = 0) { return Number(-b) / (2 * a) },
+
+    yv(a, delta = 0) { return Number(-delta) / (4 * a) }
+}
+
+const delta = calcEq2g['delta']
+const x1 = calcEq2g['x1']
+const x2 = calcEq2g['x2']
+const xv = calcEq2g['xv']
+const yv = calcEq2g['yv']
+
+function isWrite(a) {
+    if (a.length == 0 || Number(a) == 0) {
         return false
-    }else{
+    } else {
         return true
     }
 }
 
-function deltaNeg(delta){
-    if(delta < 0){
+function deltaNeg(delta) {
+    if (delta < 0) {
         return false
-    }else{
+    } else {
         return true
     }
 }
 
-function calcular(){
+function calcularRaizes() {
+    res.style.color = ''
+    res.style.textAlign = ''
+    a.style.backgroundColor = ''
 
-    if(isWrite(a.value)){
-
-        res.style.color = ''
-        res.style.textAlign = ''
-        a.style.backgroundColor = '' 
-
-        let delta = function (a,b=0,c=0){
-            return Math.pow(b,2) - 4 * Number(a) * Number(c)
-        }
-
-        let x1 = function (a,b=0,delta=0){
-            return ((Number(b)*-1) + Math.pow(delta, 0.5)) / (2 * Number(a)) 
-        }
-
-        let x2 = function (a,b=0,delta=0){
-            return ((Number(b)*-1) - Math.pow(delta, 0.5)) / (2 * Number(a)) 
-        }
-        if(deltaNeg(delta(a.value, b.value, c.value))){
+    if (isWrite(a.value)) {
+        if (deltaNeg(delta(a.value, b.value, c.value))) {
             res.innerHTML = `O valor de delta é ${delta(a.value, b.value, c.value)}<br><br>`
-        res.innerHTML += `O valor de x<sub>1</sub> = ${x1(a.value, b.value, delta(a.value, b.value, c.value))}<br><br>`
-        res.innerHTML += `O valor de x<sub>2</sub> = ${x2(a.value, b.value, delta(a.value, b.value, c.value))}`
-        }else{
+            res.innerHTML += `O valor de x<sub>1</sub> = ${x1(a.value, b.value, delta(a.value, b.value, c.value))}<br><br>`
+            res.innerHTML += `O valor de x<sub>2</sub> = ${x2(a.value, b.value, delta(a.value, b.value, c.value))}`
+        } else {
             res.innerHTML = `O valor de delta é ${delta(a.value, b.value, c.value)} então...<br><br>`
             res.innerHTML += `O valor de x<sub>1</sub> não pertence aos reais<br><br>`
             res.innerHTML += `O valor de x<sub>2</sub> não pertence aos reais`
         }
 
-    }else{
+    } else {
         res.innerHTML = 'É necessário informar o valor de A.'
         res.style.color = 'red'
         res.style.textAlign = 'center'
-        a.style.backgroundColor = 'rgba(255, 0, 0, 0.200)' 
+        a.style.backgroundColor = 'rgba(255, 0, 0, 0.200)'
+    }
+}
+
+function calcularXY() {
+    res.style.color = ''
+    res.style.textAlign = ''
+    a.style.backgroundColor = ''
+
+    if (isWrite(a.value)) {
+        if(deltaNeg(delta(a.value, b.value, c.value))){
+            res.innerHTML = `O valor de Xv = ${xv(a.value, b.value)}<br><br>`
+            res.innerHTML += `O valor de Yv = ${yv(a.value, delta(a.value, b.value, c.value))}`
+        }else{
+            res.innerHTML = `O valor de Xv = ${xv(a.value, b.value)}<br><br>`
+            res.innerHTML += `O valor de delta não pertence aos reais, por isso não é possível obter o valor de Yv.`
+        }
+    } else {
+        res.innerHTML = 'É necessário informar o valor de A.'
+        res.style.color = 'red'
+        res.style.textAlign = 'center'
+        a.style.backgroundColor = 'rgba(255, 0, 0, 0.200)'
     }
 }
